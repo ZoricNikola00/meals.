@@ -3,8 +3,8 @@ import axios from 'axios'
 import {useParams,Link} from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
-const fetchSearch=async(str:string|undefined)=>{
-  const data=await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${str}`)
+const fetchSearch=async(str:string|undefined,type:string|undefined)=>{
+  const data=await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?${type}=${str}`)
   return data?.data?.meals
 }
 
@@ -15,14 +15,13 @@ type Data={
 }
 
 const SpecificCategory = () => {
-  const {str}=useParams()
-  const {data,isLoading}=useQuery(['category',str],()=>fetchSearch(str))
-  console.log(data)
+  const {type,str}=useParams()
+  const {data,isLoading}=useQuery(['category',str,type],()=>fetchSearch(str,type))
   return (
     <>
       <div className='w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-xl mx-auto'>
         <div className='text-center'>
-          <h1 className='text-xl'>{str}:</h1>
+        <h1 className='text-2xl p-4'>{str}:</h1>
         </div>
       </div>
       <div className='mt-4 flex flex-wrap justify-center w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-xl mx-auto'>

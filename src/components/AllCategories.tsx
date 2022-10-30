@@ -25,7 +25,7 @@ const AllCategories = () => {
         {data?.map((x:Data)=>{
             const {idCategory,strCategory,strCategoryThumb,strCategoryDescription}=x
             return <div key={idCategory} className='overflow-hidden w-[200px] shadow-xl m-8 rounded-lg'>
-                    <Link to={`/category/${strCategory}`}><img src={strCategoryThumb} className='w-full'/></Link>
+                    <Link to={`/category/c/${strCategory}`}><img src={strCategoryThumb} className='w-full'/></Link>
                     <p className='font-bold p-4 text-xl'>{strCategory}</p>
             </div>
         })}

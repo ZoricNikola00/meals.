@@ -16,10 +16,10 @@ const AllAreas = () => {
     console.log(data)
   return (
     <div className='w-[90%] md:w-[85%] lg:w-[75%] mx-auto shadow-xl p-4 rounded-lg my-4'>
-        <h1 className='text-xl'>List Of All Availabel Available:</h1>
+        <h1 className='text-xl'>List Of Meals Based On Country:</h1>
         <ul className='list-disc text-xl flex flex-wrap w-full justify-center'>
             {data?.map((x:data,i:number)=>{
-                return <Link to={`/area/${x?.strArea}`}><li key={i} className='m-4 cursor-pointer font-bold p-2 rounded-xl hover:bg-gray-100'>{x?.strArea}</li></Link>
+                return <Link to={`/category/a/${x?.strArea}`}><li key={i} className='m-4 cursor-pointer font-bold p-2 rounded-xl hover:bg-gray-100'>{x?.strArea}</li></Link>
             })}
         </ul>
     </div>

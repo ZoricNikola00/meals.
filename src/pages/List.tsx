@@ -18,7 +18,6 @@ type Data={
 const List = () => {
   const {str}=useParams()
   const {data,isLoading}=useQuery(['list',str],()=>fetchSearch(str))
-  console.log(data)
   return (
     <>
       <div className='w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-xl mx-auto'>

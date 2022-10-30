@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SingleDish from './pages/SingleDish';
 import SpecificCategory from './pages/SpecificCategory';
-import AreaMeal from './pages/AreaMeal';
 
 
 function App() {
@@ -15,8 +14,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/list/:str' element={<List/>}/>
         <Route path='/dish/:id' element={<SingleDish/>}/>
-        <Route path='/category/:str' element={<SpecificCategory/>}/>
-        <Route path='/area/:str' element={<AreaMeal/>}/>
+        <Route path='/category/:type/:str' element={<SpecificCategory/>}/>
       </Routes>
     </>
   );
