@@ -31,7 +31,7 @@ const List = () => {
         {data?.map((x:Data)=>{
           const {idMeal,strCategory,strMeal,strMealThumb}=x
           return <div key={idMeal} className='overflow-hidden w-[250px] shadow-xl m-8 rounded-lg'>
-            <Link to=''><img src={strMealThumb} className='w-full'/></Link>
+            <Link to={`/dish/${idMeal}`}><img src={strMealThumb} className='w-full'/></Link>
             <div className='p-4'>
               <p className='text-lg uppercase'>{strMeal}</p>
               <p className='text-gray-500'>{strCategory}</p>
