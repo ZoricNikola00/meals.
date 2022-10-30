@@ -19,7 +19,7 @@ const AllAreas = () => {
         <h1 className='text-xl'>List Of All Availabel Available:</h1>
         <ul className='list-disc text-xl flex flex-wrap w-full justify-center'>
             {data?.map((x:data,i:number)=>{
-                return <Link to={``}><li key={i} className='m-4 cursor-pointer font-bold p-2 rounded-xl hover:bg-gray-100'>{x?.strArea}</li></Link>
+                return <Link to={`/area/${x?.strArea}`}><li key={i} className='m-4 cursor-pointer font-bold p-2 rounded-xl hover:bg-gray-100'>{x?.strArea}</li></Link>
             })}
         </ul>
     </div>
