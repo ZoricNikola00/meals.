@@ -34,8 +34,8 @@ const Navbar = () => {
                     <input className='p-2 rounded-lg shadow-xl text-xl border-gray-500 border-2 w-full' value={query} onChange={(e)=>setQuery(e.target.value)} placeholder='Search for meals...'/>
                     <button type='submit' className='absolute right-2 text-gray-500 top-[50%] translate-y-[-50%]'><FaSearch/></button>
                 </form>
-                    <Link to='signin'><div className='my-4 cursor-pointer w-[40%] p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Sign In</div></Link>
-                    <Link to='signup'><div className='my-4 cursor-pointer w-[40%] p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Sign Up</div></Link>
+                    <Link to='signin' className='w-[40%]'><div className='my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Sign In</div></Link>
+                    <Link to='signup' className='w-[40%]'><div className='my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Sign Up</div></Link>
             </div>
             
         </div>
