@@ -1,4 +1,5 @@
 
+import AllAreas from '../components/AllAreas'
 import AllCategories from '../components/AllCategories'
 
 
@@ -9,6 +10,7 @@ const Home = () => {
             <h1 className='text-center font-bold text-6xl'>Welcome To Meals.</h1>
         </div>
         <AllCategories/>
+        <AllAreas/>
     </>
   )
 }
