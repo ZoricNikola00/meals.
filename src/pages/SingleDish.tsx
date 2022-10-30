@@ -28,17 +28,20 @@ const SingleDish = () => {
         return str
     }
   return (
-    <div className='mt-4 w-[90%] p-4 md:w-[85%] lg:w-[75%] flex rounded-lg shadow-xl mx-auto'>
-        <div className='w-[60%]'>
-            <h1 className='text-xl uppercase mb-2'>{data?.strMeal}</h1>
-            <div className='flex mb-4'><p className='text-gray-500'>Category: <span className=''>{data?.strCategory}</span></p> <p className='ml-5 text-gray-500'>Origin: <span>{data?.strArea}</span></p></div>
-
-            <h2 className='mb-2'>Instructions:</h2>
-            <p className='mb-2 p-4 w-[80%] whitespace-pre-line shadow-xl rounded-xl'>{slicedText(data?.strInstructions,500)} <button className='text-gray-500 cursor-pointer' onClick={_=>setSliced((p:boolean)=>!p)}>{sliced?'Read More':'Show Less'}</button></p>
-            
-        </div>
-        <img src={data?.strMealThumb} className='w-[40%] h-fit rounded-xl'/>
-    </div>
+    <>
+      <div className='mt-4 w-[90%] p-4 md:w-[85%] lg:w-[75%] flex flex-col md:flex-row rounded-lg shadow-xl mx-auto'>
+          <img src={data?.strMealThumb} className='md:hidden block w-[100%] h-fit rounded-xl'/>
+          <div className='w-[100%] md:w-[60%] p-2 md:p-0'>
+              <h1 className='text-xl uppercase mb-2'>{data?.strMeal}</h1>
+              <div className='flex mb-4'><p className='text-gray-500'>Category: <span className=''>{data?.strCategory}</span></p> <p className='ml-5 text-gray-500'>Origin: <span>{data?.strArea}</span></p></div>
+              <div className='w-[100%] md:w-[80%] flex flex-col'>
+                <h2 className='mb-2'>Instructions:</h2>
+                <p className='mb-2 md:p-4 whitespace-pre-line md:shadow-xl md:rounded-xl'>{slicedText(data?.strInstructions,500)} {data?.strInstructions.length>500 && <button className='text-gray-500 cursor-pointer' onClick={_=>setSliced((p:boolean)=>!p)}>{sliced?'Read More':'Show Less'}</button>}</p>
+              </div>
+          </div>
+          <img src={data?.strMealThumb} className='hidden md:block w-[40%] h-fit rounded-xl'/>
+      </div>
+    </>
   )
 }
 
