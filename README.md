@@ -1,10 +1,10 @@
 # Tech Stack
 
-*ReactJs
+- ReactJs
 
-*Typescript
+- Typescript
 
-*Tailwind CSS
+- Tailwind CSS
 
-*Firebase
+- Firebase
 
