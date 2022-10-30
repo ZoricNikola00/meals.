@@ -10,6 +10,7 @@ const Navbar = () => {
     const [showMenu,setShowMenu]=useState(false)
     const handleSubmit=(e:React.FormEvent)=>{
         e.preventDefault()
+        setShowMenu(false)
         nav(`/list/${query}`)
     }
   return (
