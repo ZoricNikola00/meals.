@@ -13,7 +13,7 @@ const Navbar = () => {
     }
   return (
     <nav className='w-[90%] md:w-[85%] lg:w-[75%] mx-auto shadow-xl p-4 px-8 rounded-lg my-4 flex items-center justify-between'>
-        <h1 className='text-4xl font-bold uppercase'>Meals.</h1>
+        <Link to='/'><h1 className='text-4xl font-bold uppercase'>Meals.</h1></Link>
         <div className='relative '>
             <form onSubmit={handleSubmit}>
                 <input className='p-2 rounded-lg shadow-xl text-lg' value={query} onChange={(e)=>setQuery(e.target.value)} placeholder='Search for meals...'/>
