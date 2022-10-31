@@ -6,6 +6,7 @@ import SingleDish from './pages/SingleDish';
 import SpecificCategory from './pages/SpecificCategory';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import Account from './pages/Account';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Route path='/category/:type/:str' element={<SpecificCategory/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/signin' element={<SignIn/>}/>
-
+        <Route path='/account' element={<Account/>}/>
       </Routes>
     </>
   );
