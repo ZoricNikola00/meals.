@@ -32,7 +32,7 @@ const SingleDish = () => {
         const ref=collection(db,'users')
         const dat=await getDocs(ref);
         dat.docs.map((x)=>{
-          if(x.data().favoriteMeals.some((y:any)=>y.idMeal===data?.idMeal)){
+          if(x.data().favoriteMeals.some((y:any)=>y.idMeal===id)){
             return setLiked(true)
           }
         })}
