@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
 const SignIn = () => {
+    const {signIn}=useGlobalContext()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
-
+    const [error,setError]=useState('')
+    const navigate=useNavigate()
+    const handleSubmit=async(e:React.FormEvent)=>{
+        e.preventDefault()
+        setError('')
+        try{
+          await signIn(email, password)
+          navigate('/')
+        }
+        catch(err:any){
+          console.log(err)
+          setError(err.message)
+        }
+      }
   return (
     <div className='max-w-[450px] h-[600px] bg-black/20 mx-auto rounded-lg shadow-xl py-8 my-8 '>
         <h1 className='text-2xl font-bold text-center'>Sign In</h1>
-        <form className='flex flex-col items-center max-w-[320px] mx-auto'>
+        <form onSubmit={handleSubmit} className='flex flex-col items-center max-w-[320px] mx-auto'>
             <input className='p-4  rounded-xl shadow-xl my-4 w-full' placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
             <input className='p-4  rounded-xl shadow-xl my-4 w-full' placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
             <button type='submit' className='bg-gray-600 rounded-xl shadow-xl text-white my-4 p-4 w-full'>Sign Up</button>
