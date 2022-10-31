@@ -1,26 +1,17 @@
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { useState, useEffect } from 'react'
+import { useState, } from 'react'
 import {AiFillHeart,AiOutlineHeart} from 'react-icons/ai'
 import { useGlobalContext } from '../context'
-import { updateDoc,doc, arrayUnion, getDoc, collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { updateDoc,doc, arrayUnion, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
-import { async } from '@firebase/util'
 
 const fetchMeal=async(id:string|undefined)=>{
     const data=await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     return data?.data?.meals[0]
 }
-type Data={
-    idMeal:number,
-    strMeal:string,
-    strCategory:string,
-    strMealThumb:string,
-    strYoutube:string,
-    strInstructions:string,
-    strArea:string,
-  }
+
 const SingleDish = () => {
     const {user}=useGlobalContext()
     const {id}=useParams()
