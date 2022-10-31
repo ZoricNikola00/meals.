@@ -33,7 +33,7 @@ const Navbar = () => {
             </form>
         </div>
         {user?.email ? <div className='hidden md:flex text-lg'>
-            <Link onClick={_=>setShowMenu(false)} to='profile'><div className='mx-4 cursor-pointer'>Profile</div></Link>
+            <Link onClick={_=>setShowMenu(false)} to='/account'><div className='mx-4 cursor-pointer'>Account</div></Link>
             <div onClick={handleLogout} className='mx-4 cursor-pointer'>Sign Out</div>
         </div>:
 
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </form>
                 {user?.email ?
                     <div className='w-[40%]'>
-                        <Link onClick={_=>setShowMenu(false)} to='profile' className='w-full'><div className='my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Profile</div></Link>
+                        <Link onClick={_=>setShowMenu(false)} to='/account' className='w-full'><div className='my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Account</div></Link>
                         <div className='w-full my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-2xl rounded-lg'>Sign Out</div>
                     </div>
                      :
