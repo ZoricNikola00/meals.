@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
 import {AiFillHeart,AiOutlineHeart} from 'react-icons/ai'
 import { useGlobalContext } from '../context'
-import { updateDoc,doc, arrayUnion, getDoc, collection, getDocs } from 'firebase/firestore'
+import { updateDoc,doc, arrayUnion, getDoc, collection, getDocs, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 import { async } from '@firebase/util'
 
@@ -26,17 +26,11 @@ const SingleDish = () => {
     const {id}=useParams()
     const [sliced,setSliced]=useState(true)
     const [liked,setLiked]=useState(false)
-    const [like,setLike]=useState(false)
     const {data,isLoading}=useQuery(['meal',id],()=>fetchMeal(id),{onSuccess:()=>{
-      const check=async()=>{
-        const ref=collection(db,'users')
-        const dat=await getDocs(ref);
-        dat.docs.map((x)=>{
-          if(x.data().favoriteMeals.some((y:any)=>y.idMeal===id)){
-            return setLiked(true)
-          }
-        })}
-        check()
+      onSnapshot(doc(db,'users',`${user?.email}`),(d)=>{
+        if(d.data()?.favoriteMeals.some((x:any)=>x.idMeal===id)) setLiked(true)
+    })
+        
     }})
     //const {strMeal,strArea,strMealThumb,strCategory,strInstructions}=data
     const slicedText=(str:string,num:number)=>{
