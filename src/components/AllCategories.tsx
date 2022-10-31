@@ -24,7 +24,7 @@ const AllCategories = () => {
     <div className='flex flex-wrap justify-center'>
         {data?.map((x:Data)=>{
             const {idCategory,strCategory,strCategoryThumb,strCategoryDescription}=x
-            return <div key={idCategory} className='overflow-hidden w-[200px] shadow-xl m-8 rounded-lg'>
+            return <div key={idCategory} className='overflow-hidden w-[200px] shadow-md hover:shadow-2xl m-8 rounded-lg'>
                     <Link to={`/category/c/${strCategory}`}><img src={strCategoryThumb} className='w-full'/></Link>
                     <p className='font-bold p-4 text-xl'>{strCategory}</p>
             </div>

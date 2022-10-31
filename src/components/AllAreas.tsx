@@ -15,7 +15,7 @@ const AllAreas = () => {
 
     console.log(data)
   return (
-    <div className='w-[90%] md:w-[85%] lg:w-[75%] mx-auto shadow-xl p-4 rounded-lg my-4'>
+    <div className='w-[90%] md:w-[85%] lg:w-[75%] mx-auto shadow-md hover:shadow-2xl p-4 rounded-lg my-4'>
         <h1 className='text-xl'>List Of Meals Based On Country:</h1>
         <ul className='list-disc text-xl flex flex-wrap w-full justify-center'>
             {data?.map((x:data,i:number)=>{
