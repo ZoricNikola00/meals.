@@ -27,7 +27,7 @@ const SpecificCategory = () => {
       <div className='mt-4 flex flex-wrap justify-center w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-xl mx-auto'>
         {data?.map((x:Data)=>{
           const {idMeal,strMeal,strMealThumb}=x
-          return <div key={idMeal} className='overflow-hidden w-[250px] shadow-xl m-8 rounded-lg'>
+          return <div key={idMeal} className='overflow-hidden w-[250px] shadow-md hover:shadow-2xl m-8 rounded-lg'>
             <Link to={`/dish/${idMeal}`}><img src={strMealThumb} className='w-full'/></Link>
             <div className='p-4'>
               <p className='text-lg uppercase font-bold'>{strMeal}</p>
