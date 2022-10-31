@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState, } from 'react'
 import {AiFillHeart,AiOutlineHeart} from 'react-icons/ai'
 import { useGlobalContext } from '../context'
-import { updateDoc,doc, arrayUnion, onSnapshot } from 'firebase/firestore'
+import { updateDoc,doc, arrayUnion, onSnapshot, getDocFromCache } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const fetchMeal=async(id:string|undefined)=>{
@@ -17,13 +17,14 @@ const SingleDish = () => {
     const {id}=useParams()
     const [sliced,setSliced]=useState(true)
     const [liked,setLiked]=useState(false)
-    const {data,isLoading}=useQuery(['meal',id],()=>fetchMeal(id),{onSuccess:()=>{
+
+    const {data}=useQuery(['meal',id],()=>fetchMeal(id),{onSuccess:()=>{
+      if(user?.email){
       onSnapshot(doc(db,'users',`${user?.email}`),(d)=>{
         if(d.data()?.favoriteMeals.some((x:any)=>x.idMeal===id)) setLiked(true)
-    })
-        
-    }})
-    //const {strMeal,strArea,strMealThumb,strCategory,strInstructions}=data
+          })}
+      }})
+
     const slicedText=(str:string,num:number)=>{
         if(str?.length > num && sliced){
             return str.slice(0,num)+'...'
@@ -33,12 +34,23 @@ const SingleDish = () => {
     const mealId=doc(db,'users',`${user?.email}`)
     const saveMeal=async()=>{
       if(user?.email){
+        if(!liked){
         setLiked(true)
         await updateDoc(mealId,{
           favoriteMeals:arrayUnion({
             ...data
           })
         })
+      }
+        else if(liked){
+          const doc=await getDocFromCache(mealId)
+          const newFavorite=doc.data()?.favoriteMeals.filter((x:any)=>x.idMeal!==id)
+          setLiked(false)
+          await updateDoc(mealId,{
+              favoriteMeals:newFavorite
+          })
+        }
+  
       }
       else{
         alert("You are not logged in!")
