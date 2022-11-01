@@ -38,9 +38,10 @@ const Navbar = () => {
             <button onClick={changeTheme} className={`font-bold text-sm shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
         </div>:
 
-        <div className='hidden md:flex text-lg'>
+        <div className='hidden md:flex text-lg md:items-center'>
             <Link onClick={_=>setShowMenu(false)} to='signin'><div className='mx-4 cursor-pointer'>Sign In</div></Link>
             <Link onClick={_=>setShowMenu(false)} to='signup'><div className='mx-4 cursor-pointer'>Sign Up</div></Link>
+            <button onClick={changeTheme} className={`font-bold text-sm shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
         </div>
         }   
         <div className={`${showMenu?'rotate-90':'rotate-0'} transition-transform duration-500 block md:hidden text-4xl cursor-pointer z-40`} onClick={_=>setShowMenu(p=>!p)}><FaBars/></div>

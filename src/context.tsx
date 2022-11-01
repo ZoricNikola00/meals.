@@ -30,7 +30,7 @@ const AppContext=createContext<{
 export const AppProvider:React.FC<any> = ({children}) => {
     const [user,setUser]=useState<any>()
     const [theme,setTheme]=useState(false)
-    const [shadow,setShadow]=useState('white')
+    const [shadow,setShadow]=useState('')
 
     const changeTheme=()=>{
         setTheme(p=>!p)
