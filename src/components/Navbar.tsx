@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link className='z-40' to='/'><h1 className='text-4xl font-bold uppercase '>Meals.</h1></Link>
         <div className='relative hidden md:block'>
             <form onSubmit={handleSubmit}>
-                <input className={`p-2 ${theme?'text-black':'text-white'} rounded-lg shadow-${shadow} ${theme?'shadow-md':'shadow-lg'} text-lg`} value={query} onChange={(e)=>setQuery(e.target.value)} placeholder='Search for meals...'/>
+                <input className={`p-2 text-black rounded-lg shadow-${shadow} ${theme?'shadow-md':'shadow-lg'} text-lg`} value={query} onChange={(e)=>setQuery(e.target.value)} placeholder='Search for meals...'/>
                 <button type='submit' className='absolute right-1 text-gray-500 top-[50%] translate-y-[-50%]'><FaSearch/></button>
             </form>
         </div>
