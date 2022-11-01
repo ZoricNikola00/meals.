@@ -18,20 +18,20 @@ type Data={
 
 const List = () => {
   const {str}=useParams()
-  const {shadow}=useGlobalContext()
+  const {theme}=useGlobalContext()
   const {data,isLoading}=useQuery(['list',str],()=>fetchSearch(str))
   return (
     <>
-      <div className={`w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-lg mx-auto shadow-${shadow}`}>
+      <div className={`w-[90%] md:w-[85%] lg:w-[75%] ${!theme?'bg-yellow-50':'bg-[#07171f]'} rounded-lg shadow-lg mx-auto`}>
         <div className='text-center my-10'>
           <h1 className='text-lg'>You search word was:</h1>
           <p className='text-2xl'>{str}</p>
         </div>
       </div>
-      <div className={`mt-4 flex flex-wrap justify-center w-[90%] md:w-[85%] lg:w-[75%]  rounded-lg shadow-lg mx-auto shadow-${shadow}`}>
+      <div className={`mt-4 flex flex-wrap justify-center w-[90%] md:w-[85%] lg:w-[75%] ${!theme?'bg-yellow-50':'bg-[#07171f]'} rounded-lg shadow-lg mx-auto`}>
         {data?.map((x:Data)=>{
           const {idMeal,strCategory,strMeal,strMealThumb}=x
-          return <div key={idMeal} className={`overflow-hidden w-[250px] shadow-md hover:shadow-2xl m-8 rounded-lg shadow-${shadow} hover:shadow-${shadow}`}>
+          return <div key={idMeal} className={`overflow-hidden w-[250px] shadow-md hover:shadow-2xl m-8 rounded-lg`}>
             <Link to={`/dish/${idMeal}`}><img src={strMealThumb} className='w-full'/></Link>
             <div className='p-4'>
               <p className='text-lg uppercase'>{strMeal}</p>

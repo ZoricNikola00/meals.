@@ -15,7 +15,6 @@ const AppContext=createContext<{
     logOut:()=>void,
     theme:boolean,
     changeTheme:()=>void,
-    shadow:string
 }>({
     user:{},
     signIn:()=>{},
@@ -23,31 +22,26 @@ const AppContext=createContext<{
     logOut:()=>{},
     theme:false,
     changeTheme:()=>{},
-    shadow:''
 })
 
 
 export const AppProvider:React.FC<any> = ({children}) => {
     const [user,setUser]=useState<any>()
     const [theme,setTheme]=useState(false)
-    const [shadow,setShadow]=useState('')
 
     const changeTheme=()=>{
         setTheme(p=>!p)
         if(!theme){
             document.getElementsByTagName("body")[0].style.backgroundColor='rgb(2, 8, 11)'
             document.getElementsByTagName("body")[0].style.color='white'
-            setShadow('white')
 
         }
         else{
             document.getElementsByTagName("body")[0].style.backgroundColor='white'
             document.getElementsByTagName("body")[0].style.color='rgb(2, 8, 22)'
-            setShadow('')
-
         }
     }
-
+ 
     const signIn=(email:string,password:string)=>{
         signInWithEmailAndPassword(auth,email,password)
     }
@@ -74,7 +68,7 @@ export const AppProvider:React.FC<any> = ({children}) => {
      },[])
 
   return (
-    <AppContext.Provider value={{shadow,theme,changeTheme,user,signIn,signUp,logOut}}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{theme,changeTheme,user,signIn,signUp,logOut}}>{children}</AppContext.Provider>
   )
 }
 

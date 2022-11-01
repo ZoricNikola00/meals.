@@ -7,7 +7,7 @@ const SignUp = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const navigate=useNavigate()
-    
+    const {theme}=useGlobalContext()
     const handleSubmit=async (e:React.FormEvent)=>{
         e.preventDefault()
         try{
@@ -19,7 +19,7 @@ const SignUp = () => {
         }
       }
   return (
-    <div className='max-w-[450px] h-[600px] bg-black/20 mx-auto rounded-lg shadow-xl py-8 my-8 '>
+    <div className={`${!theme?'bg-yellow-50':'bg-[#07171f]'} max-w-[450px] h-[600px] bg-black/20 mx-auto rounded-lg shadow-xl py-8 my-8`}>
         <h1 className='text-2xl font-bold text-center'>Sign Up</h1>
         <form onSubmit={handleSubmit} className='flex flex-col items-center max-w-[320px] mx-auto'>
             <input className='p-4  rounded-xl shadow-xl my-4 w-full' placeholder='Email' type='email' autoComplete='email' required value={email} onChange={(e)=>setEmail(e.target.value)}/>
