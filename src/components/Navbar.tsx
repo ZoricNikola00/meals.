@@ -35,7 +35,7 @@ const Navbar = () => {
         {user?.email ? <div className='hidden md:flex text-lg md:items-center'>
             <Link onClick={_=>setShowMenu(false)} to='/account'><div className='mx-4 cursor-pointer'>Account</div></Link>
             <div onClick={handleLogout} className='mx-4 cursor-pointer'>Sign Out</div>
-            <button onClick={changeTheme} className={`shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
+            <button onClick={changeTheme} className={`font-bold text-sm shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
         </div>:
 
         <div className='hidden md:flex text-lg'>
@@ -52,18 +52,18 @@ const Navbar = () => {
                     <button type='submit' className='absolute right-2 text-gray-500 top-[50%] translate-y-[-50%]'><FaSearch/></button>
                 </form>
                 {user?.email ?
-                    <div className='w-[40%]'>
+                    <div className='w-[40%] text-center'>
                         <Link onClick={_=>setShowMenu(false)} to='/account' className='w-full'><div className={`my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-${shadow} shadow-lg rounded-lg`}>Account</div></Link>
                         <div className={`w-full my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-${shadow} shadow-lg rounded-lg`}>Sign Out</div>
-                        <button onClick={changeTheme}>Night Mode</button>
+                        <button onClick={changeTheme} className={`font-bold my-4  shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
 
                     </div>
                      :
-                    <div className='w-[40%]'>
+                    <div className='w-[40%] text-center'>
                         <Link onClick={_=>setShowMenu(false)} to='signin' className='w-full'><div className={`my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-${shadow} shadow-lg rounded-lg`}>Sign In</div></Link>
                         <Link onClick={_=>setShowMenu(false)} to='signup' className='w-full'><div className={`my-4 cursor-pointer p-4 text-lg text-white hover:text-gray-500 transition duration-500 text-center hover:bg-white bg-gray-500 shadow-${shadow} shadow-lg rounded-lg`}>Sign Up</div></Link>
-                        <button onClick={changeTheme}>Night Mode</button>
-                    </div>
+                        <button onClick={changeTheme} className={`font-bold my-4  shadow-md rounded-xl p-2 shadow-${shadow}`}>{theme?<p className='flex items-center'><FaSun/><span className='mx-1'>Light Mode</span></p>:<p className='flex items-center'><FaMoon/><span className='mx-1'>Dark Mode</span></p>}</button>
+                        </div>
                 }
             </div>
             
