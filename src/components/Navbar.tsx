@@ -46,7 +46,7 @@ const Navbar = () => {
         }   
         <div className={`${showMenu?'rotate-90':'rotate-0'} transition-transform duration-500 block md:hidden text-4xl cursor-pointer z-40`} onClick={_=>setShowMenu(p=>!p)}><FaBars/></div>
         
-        <div className={`fixed top-0 left-0 w-full h-full py-36 ${!theme?'bg-white':'bg-[#020816]'} transition-transform duration-500     ${showMenu?'translate-y-[0%]':'translate-y-[-100%]'}`}>
+        <div className={`fixed top-0 left-0 w-full h-full py-36 ${!theme?'bg-white':'bg-[#02080b]'} transition-transform duration-500     ${showMenu?'translate-y-[0%]':'translate-y-[-100%]'}`}>
             <div className='relative flex flex-col justify-center items-center'>
                 <form onSubmit={handleSubmit} className='my-4 relative w-[60%]'>
                     <input className={`p-2 rounded-lg shadow:${shadow} ${theme?'text-black':'text-white'} shadow-xl text-xl border-gray-500 border-2 w-full`} value={query} onChange={(e)=>setQuery(e.target.value)} placeholder='Search for meals...'/>
