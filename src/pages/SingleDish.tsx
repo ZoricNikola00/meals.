@@ -13,7 +13,7 @@ const fetchMeal=async(id:string|undefined)=>{
 }
 
 const SingleDish = () => {
-    const {user}=useGlobalContext()
+    const {user,shadow}=useGlobalContext()
     const {id}=useParams()
     const [sliced,setSliced]=useState(true)
     const [liked,setLiked]=useState(false)
@@ -59,7 +59,7 @@ const SingleDish = () => {
    
   return (
     <>
-      <div className='mt-4 w-[90%] p-4 md:w-[85%] lg:w-[75%] flex flex-col md:flex-row rounded-lg shadow-xl mx-auto'>
+      <div className={`mt-10 w-[90%] p-4 md:w-[85%] lg:w-[75%] flex flex-col md:flex-row rounded-lg shadow-lg shadow-${shadow} mx-auto`}>
           <img src={data?.strMealThumb} className='md:hidden block w-[100%] h-fit rounded-xl'/>
           <div className='w-[100%] md:w-[60%] p-2 md:p-0'>
               <div className='mb-2 flex items-center justify-between   w-[100%] md:w-[80%]'>
@@ -69,7 +69,7 @@ const SingleDish = () => {
               <div className='flex mb-4'><p className='text-gray-500'>Category: <span className='cursor-pointer hover:text-gray-700' onClick={_=>navigate(`/category/c/${data?.strCategory}`)}>{data?.strCategory}</span></p> <p className='ml-5 text-gray-500'>Origin: <span className='cursor-pointer hover:text-gray-700' onClick={_=>navigate(`/category/a/${data?.strArea}`)}>{data?.strArea}</span></p></div>
               <div className='w-[100%] md:w-[80%] flex flex-col'>
                 <h2 className='mb-2'>Instructions:</h2>
-                <p className='mb-2 md:p-4 whitespace-pre-line md:shadow-xl md:rounded-xl'>{slicedText(data?.strInstructions,500)} {data?.strInstructions.length>500 && <button className='text-gray-500 cursor-pointer' onClick={_=>setSliced((p:boolean)=>!p)}>{sliced?'Read More':'Show Less'}</button>}</p>
+                <p className={`mb-2 md:p-4 whitespace-pre-line md:shadow-sm md:shadow-${shadow} md:rounded-xl`}>{slicedText(data?.strInstructions,500)} {data?.strInstructions.length>500 && <button className='text-gray-500 cursor-pointer' onClick={_=>setSliced((p:boolean)=>!p)}>{sliced?'Read More':'Show Less'}</button>}</p>
               </div>
           </div>
           <img src={data?.strMealThumb} className='hidden md:block w-[40%] h-fit rounded-xl'/>

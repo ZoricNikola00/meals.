@@ -7,7 +7,7 @@ import { db } from '../firebase'
 
 const FavoriteMeals = () => {
     const [meals,setMeals]=useState([])
-    const {user}=useGlobalContext()
+    const {user,shadow}=useGlobalContext()
     useEffect(()=>{
         onSnapshot(doc(db,'users',`${user?.email}`),(d)=>{
             setMeals(d.data()?.favoriteMeals)
@@ -30,7 +30,7 @@ const FavoriteMeals = () => {
         <div className='mt-4 flex flex-wrap justify-center w-[90%] md:w-[85%] lg:w-[75%] mx-auto'>
         {meals?.map((x:any)=>{
           const {idMeal,strMeal,strMealThumb}=x
-          return <div key={idMeal} className='overflow-hidden w-[250px] shadow-xl m-8 rounded-lg relative'>
+          return <div key={idMeal} className={`overflow-hidden w-[250px] shadow-lg m-8 rounded-lg relative shadow-${shadow}`}>
             <Link to={`/dish/${idMeal}`}><img src={strMealThumb} className='w-full'/></Link>
             <div onClick={_=>deleteMeal(idMeal)} className='absolute cursor-pointer text-white bg-black/50 rounded-full p-2 top-2 right-2'><FaTimes/></div>
             <div className='p-4'>
